@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Happy Kido</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function showMessage() {
+            let message = document.getElementById('websiteMessage');
+            message.style.display = 'block';
+        }
+    </script>
+<style>
+    .website-message {
+        margin-top: 10px;
+        font-size: 16px;
+        color: white;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <section class="hero">
+        <div class="overlay"></div>
+        <img src="Sept.jpg">
+        <div class="text">
+            <h2>Enjoy the Ride!</h2>
+            <p>Meet my kiddo, my trusty ride that takes me on endless adventures.<br> 
+                Whether it's a off-road journey, it never lets me down.<br> 
+                Every ride feels like a new memory in the making!</p>
+            <a href="#" class="btn" onclick="showMessage()">INFO</a>
+                    <p id="websiteMessage" class="website-message" style="display: none;">This is My Website</p>
+        </div>
+    </section>
+</body>
+</html>
