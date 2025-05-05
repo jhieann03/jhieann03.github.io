@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anime</title>
+  <link rel="icon" href="anime-icon.jpg" type="image/jpeg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url('https://wallpaperaccess.com/full/841602.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card img:hover {
+      animation: bounce 0.5s ease;
+    }
+
+    @keyframes bounce {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.2); }
+      50% { transform: scale(0.95); }
+      70% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    #loader {
+      display: none;
+    }
+
+    .anime-description {
+      font-family: 'Orbitron', sans-serif;
+      color: #808dff;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-primary {
+      background-color: #161881;
+      border: none;
+      box-shadow: 0 0 10px #d10146, 0 0 20px #ff80ab;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-primary:hover {
+      background-color: #ff80ab;
+      box-shadow: 0 0 15px #ff4081, 0 0 30px #ff80ab;
+    }
+
+    .close-btn {
+      display: block;
+      margin: 30px auto 0;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .close-btn:hover {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container my-5">
+    <h1 class="text-center mb-2 fw-bold">🌸 ANIME🔍</h1>
+    <p class="text-center anime-description mb-4">✨ Discover your favorite anime titles, explore details, and dive into
+      a world of Japanese animation! 🎥🍥</p>
+
+    <div class="input-group mb-4">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search for anime..." />
+      <button class="btn btn-primary" onclick="searchAnime()">Search</button>
+    </div>
+
+    <div id="loader" class="text-center mb-4">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2 text-muted">Fetching results...</p>
+    </div>
+
+    <div id="animeResults" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"></div>
+
+    <button class="close-btn" id="closeBtn" onclick="closeResults()" style="display: none;">Close</button>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const resultsContainer = document.getElementById('animeResults');
+    const loader = document.getElementById('loader');
+    const closeBtn = document.getElementById('closeBtn');
+
+    searchInput.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        searchAnime();
+      }
+    });
+
+    async function searchAnime() {
+      const query = searchInput.value.trim();
+      if (!query) return;
+
+      loader.style.display = 'block';
+      resultsContainer.innerHTML = '';
+
+      try {
+        const res = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}&limit=12`);
+        const data = await res.json();
+
+        loader.style.display = 'none';
+
+        if (!data.data.length) {
+          resultsContainer.innerHTML = `<p class="text-muted">No results found.</p>`;
+          return;
+        }
+
+        const cards = data.data.map(anime => `
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <img src="${anime.images.jpg.image_url}" class="card-img-top" alt="${anime.title}">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <h5 class="card-title">${anime.title}</h5>
+                  <p class="card-text">Score: ${anime.score ?? 'N/A'}</p>
+                </div>
+                <a href="view.html?id=${anime.mal_id}" class="btn btn-outline-primary mt-auto">View</a>
+              </div>
+            </div>
+          </div>
+        `);
+
+        resultsContainer.innerHTML = cards.join('');
+        closeBtn.style.display = 'block';
+      } catch (error) {
+        loader.style.display = 'none';
+        resultsContainer.innerHTML = `<p class="text-danger">Error fetching data. Please try again.</p>`;
+        console.error(error);
+      }
+    }
+
+    function closeResults() {
+      resultsContainer.innerHTML = '';
+      closeBtn.style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>
