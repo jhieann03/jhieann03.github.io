@@ -33,11 +33,25 @@
     }
 
     @keyframes bounce {
-      0% { transform: scale(1); }
-      30% { transform: scale(1.2); }
-      50% { transform: scale(0.95); }
-      70% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+      }
+
+      30% {
+        transform: scale(1.2);
+      }
+
+      50% {
+        transform: scale(0.95);
+      }
+
+      70% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
     #loader {
@@ -51,8 +65,15 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .btn-primary {
@@ -116,7 +137,7 @@
     const closeBtn = document.getElementById('closeBtn');
 
     searchInput.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
+      if (event.key == 'Enter') {
         event.preventDefault();
         searchAnime();
       }
@@ -140,7 +161,20 @@
           return;
         }
 
-        const cards = data.data.map(anime => `
+        localStorage.setItem('lastQuery', query);
+        localStorage.setItem('lastResults', JSON.stringify(data.data));
+
+        displayResults(data.data);
+      } catch (error) {
+        loader.style.display = 'none';
+        resultsContainer.innerHTML = `<p class="text-danger">Error fetching data. Please try again.</p>`;
+        console.error(error);
+      }
+    }
+
+    function displayResults(results) {
+      const cards = results.map(function (anime) {
+        return `
           <div class="col">
             <div class="card h-100 shadow-sm">
               <img src="${anime.images.jpg.image_url}" class="card-img-top" alt="${anime.title}">
@@ -153,21 +187,29 @@
               </div>
             </div>
           </div>
-        `);
+        `;
+      });
 
-        resultsContainer.innerHTML = cards.join('');
-        closeBtn.style.display = 'block';
-      } catch (error) {
-        loader.style.display = 'none';
-        resultsContainer.innerHTML = `<p class="text-danger">Error fetching data. Please try again.</p>`;
-        console.error(error);
-      }
+      resultsContainer.innerHTML = cards.join('');
+      closeBtn.style.display = 'block';
     }
 
     function closeResults() {
       resultsContainer.innerHTML = '';
       closeBtn.style.display = 'none';
+      localStorage.removeItem('lastQuery');
+      localStorage.removeItem('lastResults');
     }
+
+    window.onload = function () {
+      const lastQuery = localStorage.getItem('lastQuery');
+      const lastResults = localStorage.getItem('lastResults');
+
+      if (lastQuery && lastResults) {
+        searchInput.value = lastQuery;
+        displayResults(JSON.parse(lastResults));
+      }
+    };
   </script>
 </body>
 
