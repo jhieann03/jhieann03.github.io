@@ -54,6 +54,7 @@
     .card-img-top {
       object-fit: cover;
       height: 200px;
+      cursor: pointer;
     }
 
     .card-body {
@@ -79,16 +80,18 @@
     body.dark-mode .card-body {
       background-color: #444444;
     }
+
+    #modalImage {
+      max-width: 80vw;
+      max-height: 80vh;
+      object-fit: contain;
+    }
   </style>
 
   <script>
     function toggleFamilyInfo() {
       const familyInfo = document.getElementById("familyInfo");
-      if (familyInfo.style.display === "none" || familyInfo.style.display === "") {
-        familyInfo.style.display = "block";
-      } else {
-        familyInfo.style.display = "none";
-      }
+      familyInfo.style.display = (familyInfo.style.display === "none" || familyInfo.style.display === "") ? "block" : "none";
     }
 
     function toggleDarkMode() {
@@ -101,6 +104,13 @@
     window.onload = () => {
       document.body.classList.add("light-mode");
     };
+
+    function showImageModal(src) {
+      const modalImage = document.getElementById("modalImage");
+      modalImage.src = src;
+      const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
+      imageModal.show();
+    }
   </script>
 </head>
 
@@ -193,6 +203,17 @@
       </div>
     </div>
 
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-transparent border-0">
+          <div class="modal-body text-center p-0">
+            <img id="modalImage" src="" alt="Full View" class="img-fluid rounded-4 shadow">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
       const titles = ["Jhie Ann", "Benjie Jr", "Jesnen", "Mary Ann", "Benjie Sr", "Family"];
       const pictures = ["Me.jpg", "Benjie.jpg", "Jesnen.jpg", "Mama.jpg", "Papa.jpg", "FamilyPicture.jpg"];
@@ -203,7 +224,7 @@
         rowElement.innerHTML += `
         <div class="col">
           <div class="card h-100 shadow-sm rounded-4">
-            <img src="img/${pictures[i]}" class="card-img-top" alt="${titles[i]}">
+            <img src="img/${pictures[i]}" class="card-img-top" alt="${titles[i]}" onclick="showImageModal('img/${pictures[i]}')">
             <div class="card-body text-center">
               <h5 class="card-title">${titles[i]}</h5>
               <p class="card-text">${contents[i]}</p>
