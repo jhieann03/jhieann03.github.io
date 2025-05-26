@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="parallax.css" />
+  <title>EZ | Banner</title>
+</head>
+
+<body>
+  <section>
+    <div class="keyart" id="parallax">
+      <div class="keyart_layer parallax" id="keyart-0" data-speed="2"></div>
+      <div class="keyart_layer parallax" id="keyart-1" data-speed="5"></div>
+      <div class="keyart_layer parallax" id="keyart-2" data-speed="11"></div>
+      <div class="keyart_layer parallax" id="keyart-3" data-speed="16"></div>
+      <div class="keyart_layer parallax" id="keyart-4" data-speed="26"></div>
+      <div class="keyart_layer parallax" id="keyart-5" data-speed="36"></div>
+      <div class="keyart_layer parallax" id="keyart-6" data-speed="49"></div>
+      <div class="keyart_layer parallax" id="keyart-7" data-speed="69"></div>
+      <div class="keyart_layer parallax" id="keyart-8" data-speed="75"></div>
+      <div class="keyart_layer" id="keyart-9" data-speed="100"></div>
+    </div>
+  </section>
+
+  <section class="main-content d-flex justify-content-center align-items-center">
+    <div style="height: 2000px;background-color:white; min-height: 100vh;">
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="UTF-8" />
+        <title>Doraemon Characters</title>
+        <style>
+          body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+          }
+
+          h1 {
+            text-align: center;
+            padding: 30px 0 10px;
+            color: #111;
+          }
+
+          .description {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 30px 30px;
+          }
+
+          .description p {
+            max-width: 800px;
+            margin: 0 auto 25px;
+            padding: 0 15px;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #201b1b;
+            text-align: justify;
+          }
+
+          .content-wrapper {
+            background-color: #cce7ff;
+            padding: 40px 0 50px;
+          }
+
+          .content-section {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f0f8ff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          }
+
+          .content-section h2 {
+            color: #004d99;
+            margin-bottom: 20px;
+          }
+
+          .character {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          }
+
+          .character img {
+            width: 60px;
+            height: auto;
+            margin-right: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.2s;
+            cursor: pointer;
+          }
+
+          .character img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+          }
+
+          .character img.enlarged {
+            transform: scale(1.8);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            position: relative;
+          }
+
+          @keyframes fadeIn {
+            to {
+              opacity: 1;
+            }
+          }
+
+          .character p {
+            margin: 0;
+            padding-right: 15px;
+            line-height: 1.6;
+            font-size: 14.5px;
+            color: #000000;
+            text-align: justify;
+          }
+
+          .character strong {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            color: #004d99;
+            margin-bottom: 8px;
+            font-style: normal;
+            border-bottom: 2px solid #004d99;
+            padding-bottom: 4px;
+          }
+
+          ul.fun-facts {
+            list-style-type: disc;
+            padding-left: 25px;
+            color: #201b1b;
+            font-size: 16px;
+            line-height: 1.6;
+          }
+
+          blockquote {
+            background: #d0e9ff;
+            border-left: 5px solid #004d99;
+            margin: 20px 0;
+            padding: 15px 20px;
+            font-style: italic;
+            color: #004d99;
+          }
+
+          blockquote footer {
+            text-align: right;
+            font-style: normal;
+            font-weight: 600;
+            margin-top: 8px;
+            color: #003366;
+          }
+
+          footer {
+            height: 100px;
+          }
+
+          @media (max-width: 600px) {
+            .character {
+              flex-direction: column;
+              align-items: flex-start;
+            }
+
+            .character img {
+              margin-bottom: 10px;
+            }
+          }
+        </style>
+      </head>
+
+      <body>
+        <section class="main-content">
+          <div class="parallax" style="min-height: 100vh; padding-bottom: 50px;">
+            <div class="content-wrapper">
+              <h1>Doraemon Characters</h1>
+
+              <div class="description">
+                <p><strong>Image Description:</strong>
+                  The image shows the main characters from the Japanese anime "Doraemon." At the center is Doraemon, the
+                  blue robotic cat, standing confidently with a smile. He is surrounded by his closest human friends:
+                  from left to right are Shizuka, Suneo, Gian, and Nobita. Above them float small pink mouse-like robots
+                  with propellers. The bright background and cheerful expressions capture the fun and adventurous spirit
+                  of the show. The Doraemon logo is also prominently displayed at the top of the image.</p>
+              </div>
+
+              <div class="content-section">
+                <h2>Characteristics</h2>
+
+                <div class="character">
+                  <img src="img/Shizuka.png" alt="Shizuka Minamoto" />
+                  <p><strong>Shizuka Minamoto</strong> – A nice and smart girl. She likes studying, playing the violin,
+                    and taking baths. She is Nobita’s crush and often joins their adventures.</p>
+                </div>
+
+                <div class="character">
+                  <img src="img/Suneo.png" alt="Suneo Honekawa" />
+                  <p><strong>Suneo Honekawa</strong> – A rich boy who likes to show off his toys. Sometimes he teases
+                    Nobita with Gian, but he can be caring too.</p>
+                </div>
+
+                <div class="character">
+                  <img src="img/Doraemon_Anime.png" alt="Doraemon" />
+                  <p><strong>Doraemon</strong> – A robot cat from the future sent to help Nobita. He has many gadgets in
+                    his pocket that bring both help and trouble. He is wise and a good friend.</p>
+                </div>
+
+                <div class="character">
+                  <img src="img/Gian.png" alt="Takeshi Gouda" />
+                  <p><strong>Takeshi Gouda (Gian)</strong> – The biggest and strongest in the group. He has a bad temper
+                    and sings badly. He can be mean but cares about his friends when it matters.</p>
+                </div>
+
+                <div class="character">
+                  <img src="img/Nobita.png" alt="Nobita Nobi" />
+                  <p><strong>Nobita Nobi</strong> – The main character. He is lazy, clumsy, and unlucky but
+                    kind-hearted. Doraemon helps him with his problems and teaches him lessons during their adventures.
+                  </p>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>Doraemon's Gadgets</h2>
+
+                <div class="character">
+                  <img src="img/Take-copter.png" alt="Take-copter" />
+                  <p><strong>Take-copter</strong> – A small propeller that allows people to fly.</p>
+                </div>
+
+                <div class="character">
+                  <img src="img/Anywhere-Door.png" alt="Anywhere Door" />
+                  <p><strong>Anywhere Door</strong> – A door that lets you go anywhere instantly.</p>
+                </div>
+
+                <div class="character">
+                  <img src="img/Time-Machine.png" alt="Time Machine" />
+                  <p><strong>Time Machine</strong> – Allows time travel to past or future.</p>
+                </div>
+              </div>
+
+              <div class="content-section" style="background-color: #e6f4ff; padding: 30px; margin-bottom: 40px;">
+                <h2 style="text-align: center; color: #004d99; margin-bottom: 25px;">Fun Facts</h2>
+                <div style="padding-left: 15px; font-size: 16px; line-height: 1.8; color: #333;">
+                  <p>• Doraemon was created by Fujiko F. Fujio in 1969.</p>
+                  <p>• The blue color of Doraemon is because he lost his ears due to a mouse bite!</p>
+                  <p>• The series has inspired movies, games, and merchandise worldwide.</p>
+                  <p>• Doraemon is a cultural icon in Japan and many Asian countries.</p>
+                </div>
+              </div>
+
+              <div class="content-section" style="background-color: #e6f4ff; padding: 30px;">
+                <h2 style="text-align: center; color: #004d99; margin-bottom: 25px;">Famous Quotes</h2>
+                <div style="padding-left: 15px; font-size: 16px; line-height: 1.8; color: #333;">
+                  <p><strong>Doraemon:</strong> "Don't give up! If you fail, try again!"</p>
+                  <p><strong>Nobita:</strong> "True friendship is a treasure."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="js/parallax.js"></script>
+
+        <script>
+          document.querySelectorAll('.character img').forEach(img => {
+            img.addEventListener('click', () => {
+              document.querySelectorAll('.character img.enlarged').forEach(otherImg => {
+                if (otherImg !== img) {
+                  otherImg.classList.remove('enlarged');
+                }
+              });
+
+              img.classList.add('enlarged');
+
+              setTimeout(() => {
+                img.classList.remove('enlarged');
+              }, 3000);
+            });
+          });
+        </script>
+
+      </body>
+
+      </html>
