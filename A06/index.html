@@ -4,29 +4,98 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gallery</title>
+  <title>Villarosa Family Gallery</title>
   <link rel="icon" href="pic.jpg">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
+    body {
+      transition: background-color 0.3s, color 0.3s;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     body.light-mode {
-      background-color: lightgreen;
-      color: black;
+      background-color: #f8f9fa;
+      color: #212529;/
     }
 
     body.dark-mode {
       background-color: #121212;
-      color: white;
-    }
-
-    .family-footer {
-      background-color: rgb(71, 156, 71);
-      color: #fff;
-      text-align: center;
+      color: #f8f9fa;
     }
 
     .section-title {
       font-weight: 600;
+    }
+
+    .hero-header {
+      background-color: #28a745;
+      color: white;
+      position: relative;
+      padding: 5rem 1rem;
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 1rem;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .card-img-top {
+      object-fit: cover;
+      height: 250px;
+      cursor: pointer;
+      border-radius: 1rem 1rem 0 0;
+    }
+
+    body.light-mode .card {
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    body.dark-mode .card {
+      background-color: #1e1e1e;
+      box-shadow: none;
+    }
+
+    body.dark-mode .card-body {
+      color: #e9ecef;
+    }
+
+    body.dark-mode .card-img-top {
+      filter: brightness(0.85);
+    }
+
+    .contact-section {
+      padding: 4rem 0;
+    }
+
+    body.light-mode .contact-section {
+      background-color: #e9ecef;
+    }
+
+    body.dark-mode .contact-section {
+      background-color: #1c1c1c;
+    }
+
+    .contact-section a {
+      color: #28a745;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-section a:hover {
+      text-decoration: underline;
+    }
+
+    .family-footer {
+      background-color: #28a745;
+      color: #fff;
     }
 
     .family-list li {
@@ -34,76 +103,113 @@
       font-size: 1rem;
     }
 
-    .about-text {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
-      margin-bottom: 10px;
-    }
-
-    .inquire-hover:hover {
-      background-color: #e0ffe0 !important;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      transition: transform 0.3s ease;
-    }
-
-    .card-img-top {
-      object-fit: cover;
-      height: 200px;
-      cursor: pointer;
-    }
-
-    .card-body {
-      padding: 1rem;
-    }
-
-    .card {
-      background-color: #fff;
-    }
-
-    body.dark-mode .card {
-      background-color: #004e3b;
-    }
-
-    body.dark-mode .card-img-top {
-      filter: brightness(0.7);
-    }
-
-    .card-body {
-      background-color: #f9f9f9;
-    }
-
-    body.dark-mode .card-body {
-      background-color: #444444;
-    }
 
     #modalImage {
-      max-width: 80vw;
-      max-height: 80vh;
+      max-width: 90vw;
+      max-height: 85vh;
       object-fit: contain;
     }
   </style>
+  
+</head>
+
+<body class="light-mode">
+
+  <header class="hero-header text-center">
+
+    <a href="../index.html" class="btn btn-outline-light position-absolute top-0 start-0 m-3">← Back</a>
+    <button class="btn btn-light position-absolute top-0 end-0 m-3" onclick="toggleDarkMode()" id="darkModeBtn">Switch
+      Mode</button>
+
+    <h1 class="display-4">My Family Gallery</h1>
+  </header>
+
+  <div class="container my-5">
+    <div class="text-center">
+      <h2 class="section-title mb-4">About Our Family</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <p class="lead">
+            My family is the most important part of my life. We are a close-knit group that values love, respect, and
+            support for one another. My father is hardworking, my mother is gentle and caring, and my siblings brighten
+            our home. We enjoy spending time together, and our bond grows stronger through everyday moments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container my-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="container-row">
+    </div>
+  </div>
+
+  <div class="contact-section">
+    <div class="container text-center">
+      <h2 class="section-title mb-3">Contact Me</h2>
+      <p class="lead mb-4">Para sa mga katanungan, maaari n'yo akong kontakin sa mga sumusunod:</p>
+      <div>
+        <p class="mb-2"><strong>Email:</strong> <a
+            href="mailto:benjievillarosajr@example.com">benjievillarosajr@example.com</a></p>
+        <p class="mb-2"><strong>Telepono:</strong> <a href="tel:+639123456789">+63 912 345 6789</a></p>
+        <p><strong>Social Media:</strong> <a href="#" target="_blank">Facebook</a> | <a href="#"
+            target="_blank">Instagram</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container my-4 text-center">
+    <button class="btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#footerCollapse"
+      aria-expanded="false" aria-controls="footerCollapse">
+      Show/Hide Family Members
+    </button>
+  </div>
+
+  <div class="collapse" id="footerCollapse">
+    <div class="container-fluid p-5 family-footer rounded-top-4 mt-3">
+      <h4 class="section-title mb-4">My Family Information</h4>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <ul class="family-list list-unstyled">
+            <li><strong>Father:</strong> Benjie Villarosa Sr. — 48yrs old — Heavy Equipment Operator — Alaminos, Laguna
+            </li>
+            <li><strong>Mother:</strong> Mary Ann Villarosa — 42yrs old — Housewife — Alaminos, Laguna</li>
+            <li><strong>Brother:</strong> Benjie Villarosa Jr. — 19yrs old — Student — Alaminos, Laguna</li>
+            <li><strong>Sister:</strong> Jesnen Villarosa — 18yrs old — Student — Alaminos, Laguna</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content bg-transparent border-0">
+        <div class="modal-body text-center p-0">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"
+            style="position: absolute; top: 1rem; right: 1rem; z-index: 10;"></button>
+          <img id="modalImage" src="" alt="Full View" class="img-fluid rounded-4 shadow">
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
-    function toggleFamilyInfo() {
-      const familyInfo = document.getElementById("familyInfo");
-      familyInfo.style.display = (familyInfo.style.display === "none" || familyInfo.style.display === "") ? "block" : "none";
-    }
 
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
       document.body.classList.toggle('light-mode');
       const btn = document.getElementById("darkModeBtn");
-      btn.textContent = document.body.classList.contains('dark-mode') ? "Switch to Light Mode" : "Switch to Dark Mode";
+
+      btn.textContent = document.body.classList.contains('dark-mode') ? "Light Mode" : "Dark Mode";
     }
 
-    window.onload = () => {
-      document.body.classList.add("light-mode");
-    };
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const btn = document.getElementById("darkModeBtn");
+      btn.textContent = document.body.classList.contains('dark-mode') ? "Light Mode" : "Dark Mode";
+    });
 
     function showImageModal(src) {
       const modalImage = document.getElementById("modalImage");
@@ -111,129 +217,33 @@
       const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
       imageModal.show();
     }
-  </script>
-</head>
 
-<body>
+    const galleryItems = [
+      { title: "Jhie Ann", picture: "Me.jpg", content: "Panganay" },
+      { title: "Benjie Jr", picture: "Benjie.jpg", content: "Pangalawa" },
+      { title: "Jesnen", picture: "Jesnen.jpg", content: "Pangatlo" },
+      { title: "Mary Ann", picture: "Mama.jpg", content: "Aking Ina" },
+      { title: "Benjie Sr", picture: "Papa.jpg", content: "Aking Ama" },
+      { title: "Villarosa Family", picture: "FamilyPicture.jpg", content: "Ang aming Pamilya" }
+    ];
 
-  <div class="container text-end mt-3">
-    <button class="btn btn-secondary" onclick="toggleDarkMode()" id="darkModeBtn">Switch to Dark Mode</button>
-  </div>
+    const rowElement = document.getElementById("container-row");
 
-  <div class="container-fluid p-5 mb-3" style="background-color: rgb(58, 184, 58); color: white">
-    <div class="h1 text-center">My Family</div>
-  </div>
-
-  <div class="container mb-2">
-    <h1 class="text-center mb-4">About</h1>
-    <div class="row">
-      <div class="col-md-4 mb-3">
-        <p>My family is the most important part of my life. We are a close-knit group that values love, respect, and
-          support for one another.</p>
-      </div>
-      <div class="col-md-4 mb-3">
-        <p>My father is hardworking. My mother is gentle and caring. I also have siblings who brighten our home.</p>
-      </div>
-      <div class="col-md-4 mb-3">
-        <p>We enjoy spending time together. Our bond grows stronger through everyday moments and shared
-          responsibilities.</p>
-      </div>
-    </div>
-
-    <div class="container my-3">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="container-row"></div>
-    </div>
-
-    <a href="../index.html" class="btn btn-transparent text-white position-absolute top-0 start-0 m-3">← Back to
-      Portfolio</a>
-
-    <div class="container-fluid mt-3 py-5" style="background-color: black; color: white;">
-      <div class="row">
-        <div class="col text-center">
-          <div class="h2 mb-5">Contact</div>
-
-          <div id="inquireButton" class="card p-4 my-2 rounded-5 mx-auto bg-light text-dark inquire-hover shadow"
-            style="max-width: 200px; cursor: pointer;" onclick="toggleFamilyInfo()">
-            Inquire
-          </div>
-
-          <div id="familyInfo" class="mt-4 mb-5" style="display: none;">
-            <h4 class="mb-3">Family Inquiry Form</h4>
-            <div class="alert alert-warning" role="alert">
-              Please note: The "Submit Inquiry" button is currently not functional.
-            </div>
-            <form>
-              <div class="mb-3">
-                <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your full name">
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email">
-              </div>
-              <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" id="message" rows="4" placeholder="Type your inquiry here"></textarea>
-              </div>
-              <button type="submit" class="btn btn-success">Submit Inquiry</button>
-              <button type="button" onclick="toggleFamilyInfo()" class="btn btn-danger ms-2">Close</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container my-4 text-center">
-      <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#footerCollapse"
-        aria-expanded="false" aria-controls="footerCollapse">
-        Show/Hide Family Info
-      </button>
-    </div>
-
-    <div class="collapse" id="footerCollapse">
-      <div class="container-fluid p-5 family-footer rounded-4 mt-3">
-        <h4 class="section-title mb-4">My Family Information</h4>
-        <ul class="family-list list-unstyled">
-          <li><strong>Father:</strong> Benjie Villarosa Sr. — 48yrs old — Heavy Equipment Operator — Alaminos, Laguna
-          </li>
-          <li><strong>Mother:</strong> Mary Ann Villarosa — 42yrs old — Housewife — Alaminos, Laguna</li>
-          <li><strong>Brother:</strong> Benjie Villarosa Jr. — 19yrs old — Student — Alaminos, Laguna</li>
-          <li><strong>Sister:</strong> Jesnen Villarosa — 18yrs old — Student — Alaminos, Laguna</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-transparent border-0">
-          <div class="modal-body text-center p-0">
-            <img id="modalImage" src="" alt="Full View" class="img-fluid rounded-4 shadow">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      const titles = ["Jhie Ann", "Benjie Jr", "Jesnen", "Mary Ann", "Benjie Sr", "Family"];
-      const pictures = ["Me.jpg", "Benjie.jpg", "Jesnen.jpg", "Mama.jpg", "Papa.jpg", "FamilyPicture.jpg"];
-      const contents = ["Panganay", "Pangalawa", "Pangatlo", "Aking Ina", "Aking Ama", "Villarosa"];
-      const rowElement = document.getElementById("container-row");
-
-      for (let i = 0; i < titles.length; i++) {
-        rowElement.innerHTML += `
+    galleryItems.forEach(item => {
+      rowElement.innerHTML += `
         <div class="col">
-          <div class="card h-100 shadow-sm rounded-4">
-            <img src="img/${pictures[i]}" class="card-img-top" alt="${titles[i]}" onclick="showImageModal('img/${pictures[i]}')">
-            <div class="card-body text-center">
-              <h5 class="card-title">${titles[i]}</h5>
-              <p class="card-text">${contents[i]}</p>
+          <div class="card h-100">
+            <img src="img/${item.picture}" class="card-img-top" alt="${item.title}" onclick="showImageModal('img/${item.picture}')">
+            <div class="card-body text-center d-flex flex-column">
+              <h5 class="card-title">${item.title}</h5>
+              <p class="card-text">${item.content}</p>
             </div>
           </div>
         </div>`;
-      }
-    </script>
+    });
+  </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
