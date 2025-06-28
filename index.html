@@ -29,7 +29,7 @@
     }
 
     .container {
-      width: 100%;
+
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
@@ -82,55 +82,35 @@
       flex-grow: 1;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
+      justify-content: center;
+      gap: 3rem;
     }
 
     .hero-text {
-      flex: 1;
+      flex: 1.1;
     }
 
     .hero-text h1 {
       font-size: 4.5rem;
-      font-weight: 700;
+      font-weight: 600;
       line-height: 1.1;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
-
+      margin-bottom: 1rem;
     }
 
-    .hero-text p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
+    .hero-text p.about-me {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      max-width: 550px;
     }
 
-
-    .hero-details {
-      list-style: none;
-
-      padding: 0;
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 0.75rem;
-
-      margin-bottom: 1.5rem;
-
-    }
-
-    .hero-details li {
-      background-color: rgba(255, 255, 255, 0.1);
-
-      padding: 0.5rem 1rem;
-
-      border-radius: 50px;
-
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-
+    .hero-text p.program-study {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
 
@@ -151,7 +131,7 @@
     }
 
     .hero-image {
-      flex-basis: 40%;
+      flex: 0.9;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -159,7 +139,7 @@
 
     .hero-image img {
       width: 100%;
-      max-width: 350px;
+      max-width: 400px;
       border-radius: 20px;
       object-fit: cover;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -256,6 +236,11 @@
       line-height: 1.8;
     }
 
+    .contact-content p strong {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
     .social-links {
       display: flex;
       justify-content: center;
@@ -311,10 +296,16 @@
         flex-direction: column-reverse;
         padding-top: 2rem;
         padding-bottom: 4rem;
+        text-align: center;
+      }
+
+      .hero-text p.about-me {
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .hero-text h1 {
-        font-size: 2.25rem;
+        font-size: 2.5rem;
       }
 
       .hero-image {
@@ -329,9 +320,7 @@
         gap: 1rem;
       }
 
-      .hero-details {
-        justify-content: center;
-      }
+
     }
   </style>
 
@@ -354,16 +343,11 @@
       <main class="hero-section" id="about">
         <div class="hero-text">
           <h1>IT STUDENT</h1>
-
-          <ul class="hero-details">
-            <li>Location: Alaminos, Laguna</li>
-            <li>Gender: Female</li>
-            <li>Age: 21</li>
-            <li>Number: 0938 361 1520</li>
-            <li>Email: jhieannvillarosa3@gmail.com</li>
-          </ul>
-
-          <p>DIPLOMA INFORMATION TECHNOLOGY</p>
+          <p class="about-me">
+            I am an IT student eager to grow and thrive in the industry. I am committed to continuous learning, ready to
+            take on challenges, and determined to prove myself as a future IT professional.
+          </p>
+          <p class="program-study">DIPLOMA INFORMATION TECHNOLOGY</p>
           <a href="#projects" class="cta-button">My Project Work</a>
         </div>
 
@@ -418,13 +402,15 @@
       <h2 class="section-title">Let's Connect</h2>
       <div class="contact-content">
         <p>
-          If you have something in mind, a question, or just
-          want to say hi, feel free to reach out through my social accounts below.
+          If you have something in mind, a question, or just want to say hi, feel free to reach out. You can contact me
+          via email at
+          <strong>jhieannvillarosa3@gmail.com</strong> or by phone at <strong>0938 361 1520</strong>. You can also find
+          me on the social platforms below.
         </p>
         <div class="social-links">
           <a href="https://web.facebook.com/jhieann.villarosa" target="_blank" class="social-link"> Facebook</a>
           <a href="https://www.instagram.com/" target="_blank" class="social-link">Instagram</a>
-          <a href="#" target="_blank" class="social-link">GitHub</a>
+
         </div>
       </div>
     </div>
@@ -443,9 +429,11 @@
     }
 
     window.scrollTo(0, 0);
+
   </script>
 
 
 </body>
+
 
 </html>
